@@ -1,0 +1,86 @@
+pip install uv -> for making virtual environment
+- uv venv
+-activate=> .venv\Scripts\activate
+OR
+virtualenv .venv
+--------------------------------------------------
+1. pip install django
+2. django-admin startproject myProject
+3. cd myProject
+4. python manage.py runserver
+-----------------------------------------------------
+Creating a App->
+python manage.py startapp tweet
+
+
+------------------------------
+manage.py -> first file to run and invoke server (Roots location)
+db.sqlite -> database flexibility to use
+Project Folder->myProject
+    -pycache -> multiple modules (optimization)
+    -setting.py ->few time going but all settings of app
+    -urls.py -> routing file 
+    -views.py -> urls routing file (main logic)
+    -modals.py -> database structures
+
+-> django templates are most powerfull tool
+------------------------------------------
+
+user->(Request)->Django->url resolver->urls.py->views.py->models.py->db
+   ^---------------|  ^--------------------------response
+
+-------------------------------------------------------------------------
+template engine -> inject template
+-> {%load static %} => on top of the file
+    -{% static 'style.css' %}
+file location^   ^file to import
+--------------------------------------------------------------------------
+jinja or DTL (django template language)
+---------------------------------------------------------------------------
+In django one app have to create
+- Many app in one django
+-------------------------------------------------------------------------
+Variables use like -> {{ }} or {% csrf_token %}
+--------------------------------------
+CReate an app in django
+    -> python manage.py startapp (appname)
+    -> enter settings .py in INstalled Apps => "appname",
+    -----------------------------------------------------
+install tailwind 
+    -> pip install django-tailwind
+    INSTALLED_APPS = [
+    "chai",
+    "tailwind",
+    "theme",
+]
+
+TAILWIND_APP_NAME = 'theme'
+INTERNAL_IPS = ['127.0.0.1']
+-----------------------------------------------
+remover migration error 18
+    -> python manage.py migrate
+----------------------------------------------------------
+django admin pannel (Most powerfull)
+    -> python manage.py createsuperuser
+forgot password-> python manage.py changepassword (admin_name)
+
+---------------------------------------------------------------
+database interactions into models.py
+-----------------------------------------------------------
+SETTINGS.py->
+import os
+STATIC_URL = "static/"
+SATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+-------------------------------------------------
+templates
+TEMPLATES = [
+    {
+        
+        "DIRS": [os.path.join(BASE_DIR, "templates")],
+        },
+    },
+]

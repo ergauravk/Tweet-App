@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: tweet-center
+    env: docker
+    dockerfilePath: tweetCenter/Dockerfile
+    plan: free
+    autoDeploy: true
+    healthCheckPath: /tweet/
+    envVars:
+      - key: DJANGO_DEBUG
+        value: "false"
+      - key: DJANGO_ALLOWED_HOSTS
+        value: ".onrender.com"
+      - key: SQLITE_PATH
+        value: /var/data/db.sqlite3
+      - key: MEDIA_ROOT
+        value: /var/data/media
+    disk:
+      name: tweet-center-data
+      mountPath: /var/data
+      sizeGB: 1

@@ -1,0 +1,19 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: tweetCenter/Dockerfile
+    environment:
+      DJANGO_DEBUG: "false"
+      DJANGO_ALLOWED_HOSTS: "*"
+      SQLITE_PATH: "/app/data/db.sqlite3"
+    ports:
+      - target: 8000
+        published: 8000
+    volumes:
+      - sqlite_data:/app/data
+      - media_data:/app/media
+
+volumes:
+  sqlite_data:
+  media_data:
